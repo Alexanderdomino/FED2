@@ -1,6 +1,6 @@
 import './ShowJobs.css'
 import { useState, useEffect } from "react";
-import { getData } from '../Services/api';
+import { getData } from '../../Services/api';
 
 
 
@@ -48,7 +48,6 @@ export function ShowJobs() {
                             ))}
                         </tbody>
                     </table>
-                    <PageSelect pageNo={pageNo} setPage={setPage} />
                 </div>
             </main>
         );

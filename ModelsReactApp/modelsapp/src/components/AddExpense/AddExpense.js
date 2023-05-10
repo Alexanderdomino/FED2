@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { postData } from '../Services/api';
+import { postData } from '../../Services/api';
 
 export function AddExpense() {
     const initialState = {
