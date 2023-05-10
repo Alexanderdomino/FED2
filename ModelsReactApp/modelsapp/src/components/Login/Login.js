@@ -1,4 +1,6 @@
 import {useRef, useState, useEffect} from 'react'
+import {Link} from "react-router-dom";
+
 
 const Login = () => {
     const userRef = useRef();
@@ -8,10 +10,12 @@ const Login = () => {
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
-    
+
     useEffect(() => {
-        userRef.current.focus();
-    }, [])
+        if (userRef.current) {
+            userRef.current.focus();
+        }
+    }, []);
     
     useEffect(() => {
         setErrMsg('');
@@ -26,6 +30,18 @@ const Login = () => {
     }
     
     return(
+        <>
+            {success ? (
+                <section>
+                    <h1>You are logged in!</h1>
+                    <br />
+                    <p>
+                        <Link to="/"> Go to Home</Link>
+                    </p>
+                </section>
+                
+            ) : (
+        
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertLive">{errMsg}</p>
             <h1>Sign In</h1>
@@ -57,6 +73,8 @@ const Login = () => {
                 Contact your modelManager 
             </p>
         </section>
+            )}
+            </>
     )
 }
 
