@@ -24,6 +24,8 @@ bower_components
 
 *.sublime*
 
+.vs/
+
 psd
 thumb
 sketch
