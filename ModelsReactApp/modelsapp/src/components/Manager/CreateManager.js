@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { postData } from '../Services/api';
+import { postData } from '../../Services/api';
 
-export function AddGrades() {
+export function CreateManager() {
     const initialState = {
         FirstName: '',
         LastName: '',
@@ -23,7 +23,7 @@ export function AddGrades() {
 
     async function sendData() {
         try {
-            await postData('managers', state);
+            await postData('api/Managers', state);
             setState(initialState);
         }
         catch (error) {
@@ -43,7 +43,7 @@ export function AddGrades() {
 
     return (
         <>
-            <h2>Add Model</h2>
+            <h2>Add Manager</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     First Name:
@@ -86,3 +86,5 @@ export function AddGrades() {
         </>
     );
 }
+
+export default CreateManager;
