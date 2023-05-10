@@ -28,6 +28,8 @@ psd
 thumb
 sketch
 
+.vs*
+
 ### ReactNative ###
 # React Native Stack Base
 
