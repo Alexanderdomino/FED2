@@ -30,6 +30,10 @@ psd
 thumb
 sketch
 
+.vs*
+.vs/
+.vs/*
+
 ### ReactNative ###
 # React Native Stack Base
 
