@@ -4,7 +4,7 @@ const Login = () => {
     const userRef = useRef();
     const errRef = useRef();
     
-    const [user, setUSer] = useState('');
+    const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
@@ -17,18 +17,45 @@ const Login = () => {
         setErrMsg('');
     }, [user, pwd])
     
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(user,pwd);
+        setUser('');
+        setPwd('');
+        setSuccess(true);
+    }
+    
     return(
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertLive">{errMsg}</p>
             <h1>Sign In</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
                 <input 
                     type="text" 
-                       id=""
+                    id="username"
+                    ref={userRef}
+                    autoComplete="off"
+                    onChange={(e) => setUser(e.target.value)}
+                    value={user}
+                    required
                 />
+
+                <label htmlFor="password">Password:</label>
+                <input
+                    type="password"
+                    id="password"
+                    onChange={(e) => setPwd(e.target.value)}
+                    value={pwd}
+                    required
+                />
+                
+                <button>Sign In</button>
             </form>
-            
+            <p>
+                Need an Account?
+                Contact your modelManager 
+            </p>
         </section>
     )
 }
