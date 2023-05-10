@@ -1,6 +1,7 @@
 import {useRef, useState, useEffect} from 'react'
 import {Link} from "react-router-dom";
 import './Login.css';
+import {postData} from "../../Services/api";
 
 
 const Login = () => {
@@ -21,14 +22,25 @@ const Login = () => {
     useEffect(() => {
         setErrMsg('');
     }, [user, pwd])
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user,pwd);
-        setUser('');
-        setPwd('');
-        setSuccess(true);
-    }
+
+        try {
+            const response = await postData('/api/account/login', { email: user, password: pwd });
+
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('token', data.jwt);
+                setSuccess(true);
+            } else {
+                const error = await response.json();
+                setErrMsg(error.message);
+            }
+        } catch (error) {
+            setErrMsg(error.message);
+        }
+    };
     
     return(
         <>
