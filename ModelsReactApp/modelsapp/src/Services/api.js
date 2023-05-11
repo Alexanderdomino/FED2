@@ -20,8 +20,9 @@ export async function postData(endpoint, body, customConfig = {}) {
     method: 'POST',
     body: JSON.stringify(body),
     ...customConfig,
-    headers: {
-      'Content-Type': 'application/json',
+      headers: {
+     'Authorization': 'Bearer ' + localStorage.getItem("token"),
+     'Content-Type': 'application/json',
       ...customConfig.headers,
     },
   }
