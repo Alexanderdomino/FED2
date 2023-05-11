@@ -1,6 +1,7 @@
 import {useRef, useState, useEffect} from 'react'
 import {Link} from "react-router-dom";
 import './Login.css';
+import {postData} from "../../Services/api";
 
 
 const Login = () => {
@@ -21,14 +22,26 @@ const Login = () => {
     useEffect(() => {
         setErrMsg('');
     }, [user, pwd])
-    
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user,pwd);
-        setUser('');
-        setPwd('');
-        setSuccess(true);
-    }
+        try {
+            const response = await postData('api/Account/login', { email: user, password: pwd });
+            console.log(response);
+
+            if (response.jwt) {
+                localStorage.setItem('token', response.jwt);
+                setSuccess(true);
+            } else {
+                const error = JSON.parse(response);
+                setErrMsg(error.message);
+            }
+
+        } catch (error) {
+            setErrMsg(error.message);
+        }
+    };
     
     return(
         <>
@@ -48,7 +61,7 @@ const Login = () => {
                     <h1>Sign In</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="username">Username:</label>
+                            <label htmlFor="username">Email:</label>
                             <input
                                 type="text"
                                 id="username"

@@ -1,6 +1,6 @@
 // This is a simplified version of https://kentcdodds.com/blog/replace-axios-with-a-simple-custom-fetch-wrapper
 // Kent's version is more optimized - less code duplication
-let api_base_url = '';
+let api_base_url = 'https://localhost:7181';
 
 export function setBaseUrl(baseUrl) {
   api_base_url = baseUrl;
