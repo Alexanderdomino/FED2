@@ -8,7 +8,6 @@ import { MainPage } from './components/MainPage/MainPage';
 import Login from './components/Login/Login';
 import ManagerPage from './components/Manager/ManagerPage';
 
-
 function App() {
     return (
         <Router>
