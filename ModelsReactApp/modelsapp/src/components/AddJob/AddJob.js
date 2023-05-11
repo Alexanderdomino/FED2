@@ -65,7 +65,8 @@ export function AddJob() {
                         Start date:
                         <input
                             name="startDate"
-                            type="text"
+                            type="date"
+                            id="datepicker"
                             value={state.startDate}
                             onChange={handleInputChange} />
                     </label>

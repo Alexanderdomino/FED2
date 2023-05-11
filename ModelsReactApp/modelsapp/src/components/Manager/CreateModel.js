@@ -163,7 +163,8 @@ export function CreateModel() {
                             BirthDate:
                             <input
                                 name="BirthDate"
-                                type="text"
+                                type="date"
+                                id="datepicker"
                                 value={state.BirthDate}
                                 onChange={handleInputChange}
                             />

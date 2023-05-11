@@ -35,7 +35,11 @@ export function AssignModelToJob() {
             setJobId("");
             setModelId("");
         } catch (error) {
-            alert(`Something bad happened: ${error}`);
+            if (error.message.includes("status: 500")) {
+                alert("Model Already assigned to this job");
+            } else {
+                alert(`Something bad happened: ${error}`);
+            }
         }
     };
 

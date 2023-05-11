@@ -26,16 +26,15 @@ export function DeleteModelFromJob() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const responseData = await response.json();
-
-            // Handle response here
-            console.log(responseData);
-
             // Reset input fields
             setJobId("");
             setModelId("");
         } catch (error) {
-            alert(`Something bad happened: ${error}`);
+            if (error.message.includes("status: 400")) {
+                alert("Model is not assigned to this job");
+            } else {
+                alert(`Something bad happened: ${error}`);
+            }
         }
     };
 
