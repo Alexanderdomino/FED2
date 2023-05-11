@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { postData } from '../../Services/api';
+import './Manager.css';
 
 export function CreateModel() {
     const initialState = {
@@ -239,8 +240,10 @@ export function CreateModel() {
                             />
                         </label>
                         <br />
+                        <div style={{ textAlign: 'center' }}>
                         <input type="reset" value="Cancel" onClick={handleReset} />{" "}
-                        <input type="submit" value="Submit" />
+                            <input type="submit" value="Submit" />
+                        </div>
                     </form>
                 </>
             )}

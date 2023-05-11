@@ -1,4 +1,5 @@
 import React from 'react';
+import './Manager.css';
 import CreateModel from './CreateModel';
 import CreateManager from './CreateManager';
 import AddJob from '../AddJob/AddJob';

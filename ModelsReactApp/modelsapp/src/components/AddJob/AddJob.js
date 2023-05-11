@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../Manager/Manager.css'
 import { postData } from '../../Services/api';
 
 export function AddJob() {
@@ -97,7 +98,10 @@ export function AddJob() {
                     <br />
 
                     <br />
-                    <input type="reset" value="Cancel" onClick={handleReset} /> <input type="submit" value="Submit" />
+                    <div style={{ textAlign: 'center' }}>
+                        <input type="reset" value="Cancel" onClick={handleReset} />{" "}
+                        <input type="submit" value="Submit" />
+                    </div>
                 </form>
             )}
         </>
