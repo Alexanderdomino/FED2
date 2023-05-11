@@ -4,7 +4,7 @@ import './Login.css';
 import {postData} from "../../Services/api";
 
 
-const Login = () => {
+const Login = (props) => {
     const userRef = useRef();
     const errRef = useRef();
     
@@ -32,6 +32,7 @@ const Login = () => {
 
             if (response.jwt) {
                 localStorage.setItem('token', response.jwt);
+                props.onLogin();
                 setSuccess(true);
             } else {
                 const error = JSON.parse(response);
@@ -57,7 +58,7 @@ const Login = () => {
             ) : (
 
                 <section>
-                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertLive">{errMsg}</p>
+                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="polite">{errMsg}</p>
                     <h1>Sign In</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
