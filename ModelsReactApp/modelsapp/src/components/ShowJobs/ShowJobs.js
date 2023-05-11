@@ -5,7 +5,6 @@ import { getData } from '../../Services/api';
 
 export function ShowJobs() {
     const [jobs, setJobs] = useState([]);
-    const [selectedJobId, setSelectedJobId] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -26,10 +25,6 @@ export function ShowJobs() {
         fetchData();
     }, []);
 
-    const handleJobSelection = (jobId) => {
-        setSelectedJobId(jobId);
-    };
-
     if (error !== null) {
         return (
             <>
@@ -45,7 +40,6 @@ export function ShowJobs() {
                     <table>
                         <thead>
                             <tr>
-                                <th>Select</th>
                                 <th>Customer</th>
                                 <th>Start date</th>
                                 <th>Days</th>
@@ -55,14 +49,6 @@ export function ShowJobs() {
                         <tbody>
                             {jobs.map(job => (
                                 <tr key={job.jobId}>
-                                    <td>
-                                        <input
-                                            type="checkbox"
-                                            value={job.jobId}
-                                            checked={job.jobId === selectedJobId}
-                                            onChange={() => handleJobSelection(job.jobId)}
-                                        />
-                                    </td>
                                     <td>{job.customer}</td>
                                     <td>{job.startDate}</td>
                                     <td>{job.days}</td>

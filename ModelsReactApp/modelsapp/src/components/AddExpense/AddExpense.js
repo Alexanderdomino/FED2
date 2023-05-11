@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { postData } from '../../Services/api';
 import jwt_decode from 'jwt-decode';
+import './AddExpense.css'
 export function AddExpense() {
     const initialState = {
         ModelId: '',
