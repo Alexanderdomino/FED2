@@ -6,6 +6,10 @@ export function Navbar() {
             <NavLink to="/Login" >
                 Log out
             </NavLink>
+            <NavLink to="/Manager" >
+                Manager page
+            </NavLink>
+
         </nav>
     );
 }

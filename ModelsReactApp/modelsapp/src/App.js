@@ -1,10 +1,12 @@
 import './App.css';
-import { 
-    BrowserRouter as Router, 
-    Routes, 
-    Route } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route
+} from 'react-router-dom';
 import { MainPage } from './components/MainPage/MainPage';
 import Login from './components/Login/Login';
+import ManagerPage from './components/Manager/ManagerPage';
 
 function App() {
     return (
@@ -13,6 +15,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<MainPage />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/manager" element={<ManagerPage />} />
                 </Routes>
             </div>
         </Router>
