@@ -1,5 +1,6 @@
 import React from 'react';
-import CreateManager, {AssignModelToJob} from '../AssignModelToJob/AssignModelToJob';
+import {AssignModelToJob} from '../AssignModelToJob/AssignModelToJob';
+import {DeleteModelFromJob} from "../DeleteModelFromJob/DeleteModelFromJob";
 import {Navbar} from "../Navbar/Navbar";
 import {Outlet} from "react-router-dom";
 
@@ -12,6 +13,7 @@ const ManagerPage = () => {
             <Outlet />
             <br/>
             <AssignModelToJob />
+            <DeleteModelFromJob />
         </div>
     );
 };
