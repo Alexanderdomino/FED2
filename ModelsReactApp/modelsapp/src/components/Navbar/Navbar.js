@@ -6,7 +6,7 @@ export function Navbar() {
             <NavLink to="/Login" >
                 Login page
             </NavLink>
-            <NavLink to="/manager" >
+            <NavLink to="/Manager" >
                 Manager page
             </NavLink>
 
