@@ -47,6 +47,7 @@ export function CreateManager() {
 
     return (
         <>
+            <h2>Create Manager</h2>
             <button onClick={toggleContentVisibility}>
                 {isContentVisible ? "Hide" : "Add Manager"}
             </button>

@@ -61,6 +61,7 @@ export function CreateModel() {
 
     return (
         <>
+            <h2>Create Model</h2>
             <button onClick={toggleContentVisibility}>
                 {isContentVisible ? "Hide" : "Add Model"}
             </button>
