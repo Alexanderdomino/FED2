@@ -45,6 +45,7 @@ export function AssignModelToJob() {
 
     return (
         <>
+            <h2>Assign model to job</h2>
             <button onClick={toggleContentVisibility}>
                 {isContentVisible ? "Hide" : "Add Model to Job"}
             </button>
