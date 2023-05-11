@@ -9,6 +9,7 @@ export function CreateModel() {
         PhoneNo: ''
     };
     const [state, setState] = useState(initialState);
+    const [isContentVisible, setIsContentVisible] = useState(false);
 
     function handleInputChange(event) {
         const name = event.target.name;
@@ -25,8 +26,7 @@ export function CreateModel() {
         try {
             await postData('api/Models', state);
             setState(initialState);
-        }
-        catch (error) {
+        } catch (error) {
             alert(error.message);
         }
     }
@@ -41,48 +41,64 @@ export function CreateModel() {
         event.preventDefault();
     }
 
+    function toggleContentVisibility() {
+        setIsContentVisible(!isContentVisible);
+    }
+
     return (
         <>
-            <h2>Add Model</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    First Name:
-                    <input
-                        name="FirstName"
-                        type="text"
-                        value={state.FirstName}
-                        onChange={handleInputChange} />
-                </label>
-                <br />
-                <label>
-                    Last Name:
-                    <input
-                        name="LastName"
-                        type="text"
-                        value={state.LastName}
-                        onChange={handleInputChange} />
-                </label>
-                <br />
-                <label>
-                    Email:
-                    <input
-                        name="Email"
-                        type="text"
-                        value={state.Email}
-                        onChange={handleInputChange} />
-                </label>
-                <br />
-                <label>
-                    Phone Number:
-                    <input
-                        name="PhoneNo"
-                        type="text"
-                        value={state.PhoneNo}
-                        onChange={handleInputChange} />
-                </label>
-                <br />
-                <input type="reset" value="Cancel" onClick={handleReset} /> <input type="submit" value="Submit" />
-            </form>
+            <button onClick={toggleContentVisibility}>
+                {isContentVisible ? "Hide" : "Add Model"}
+            </button>
+            {isContentVisible && (
+                <>
+                    <h2>Add Model</h2>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            First Name:
+                            <input
+                                name="FirstName"
+                                type="text"
+                                value={state.FirstName}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                        <br />
+                        <label>
+                            Last Name:
+                            <input
+                                name="LastName"
+                                type="text"
+                                value={state.LastName}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                        <br />
+                        <label>
+                            Email:
+                            <input
+                                name="Email"
+                                type="text"
+                                value={state.Email}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                        <br />
+                        <label>
+                            Phone Number:
+                            <input
+                                name="PhoneNo"
+                                type="text"
+                                value={state.PhoneNo}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                        <br />
+                        <input type="reset" value="Cancel" onClick={handleReset} />{" "}
+                        <input type="submit" value="Submit" />
+                    </form>
+                </>
+            )}
         </>
     );
 }
