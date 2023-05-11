@@ -23,20 +23,21 @@ const Login = () => {
         setErrMsg('');
     }, [user, pwd])
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            const response = await postData('/api/account/login', { email: user, password: pwd });
+            const response = await postData('api/Account/login', { email: user, password: pwd });
+            console.log(response);
 
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('token', data.jwt);
+            if (response.jwt) {
+                localStorage.setItem('token', response.jwt);
                 setSuccess(true);
             } else {
-                const error = await response.json();
+                const error = JSON.parse(response);
                 setErrMsg(error.message);
             }
+
         } catch (error) {
             setErrMsg(error.message);
         }
@@ -60,7 +61,7 @@ const Login = () => {
                     <h1>Sign In</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="username">Username:</label>
+                            <label htmlFor="username">Email:</label>
                             <input
                                 type="text"
                                 id="username"
