@@ -17,4 +17,4 @@ const ModelPage = () => {
         </div>
     );
 };
-
+export default ModelPage

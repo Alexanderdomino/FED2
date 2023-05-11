@@ -1,11 +1,11 @@
-import './ShowJobs.css'
+import './ShowJobs.css';
 import jwt_decode from 'jwt-decode';
 import { useState, useEffect } from "react";
 import { getData } from '../../Services/api';
 
 export function ShowJobs() {
-    const initialState = {};
-    const [state, setState] = useState(initialState);
+    const [jobs, setJobs] = useState([]);
+    const [selectedJobId, setSelectedJobId] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -16,15 +16,19 @@ export function ShowJobs() {
                 console.log(decoded);
                 //const userId = decoded.ModelId;
                 // Assuming the user ID is stored in the "sub" claim
-                const data = await getData(`api/Jobs`);
-               
-                setState(data);
+                const data = await getData(`api/Jobs/`);
+                console.log(data);
+                setJobs(data);
             } catch (error) {
                 setError(error);
             }
         };
         fetchData();
     }, []);
+
+    const handleJobSelection = (jobId) => {
+        setSelectedJobId(jobId);
+    };
 
     if (error !== null) {
         return (
@@ -40,12 +44,31 @@ export function ShowJobs() {
                     <h2>List jobs</h2>
                     <table>
                         <thead>
-                            <tr><th>Customer</th><th>Start date</th><th>days</th><th>Location</th></tr>
+                            <tr>
+                                <th>Select</th>
+                                <th>Customer</th>
+                                <th>Start date</th>
+                                <th>Days</th>
+                                <th>Location</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{state.customer}</td> <td>{state.startDate}</td><td>{state.days}</td><td>{state.location}</td>
-                            </tr>
+                            {jobs.map(job => (
+                                <tr key={job.jobId}>
+                                    <td>
+                                        <input
+                                            type="checkbox"
+                                            value={job.jobId}
+                                            checked={job.jobId === selectedJobId}
+                                            onChange={() => handleJobSelection(job.jobId)}
+                                        />
+                                    </td>
+                                    <td>{job.customer}</td>
+                                    <td>{job.startDate}</td>
+                                    <td>{job.days}</td>
+                                    <td>{job.location}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>

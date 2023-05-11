@@ -26,9 +26,10 @@ export function AddExpense() {
         try {
             const token = localStorage.getItem('token');
             const decoded = jwt_decode(token);
-            state.ModelId = decoded.ModelId
-            
-            await postData('api/Expense', state);
+            state.ModelId = decoded.ModelId;
+           
+            console.log(state);
+            await postData('api/Expenses', state);
             setState(initialState);
         }
         catch (error) {
@@ -81,9 +82,9 @@ export function AddExpense() {
                 <label>
                     Amount:
                     <input
-                        name="amount"
-                        type="text"
-                        value={state.grade}
+                        name="Amount"
+                        type="number"
+                        value={state.amount}
                         onChange={handleInputChange} />
                 </label>
                 <br />
