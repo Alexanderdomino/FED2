@@ -7,12 +7,16 @@ export function setBaseUrl(baseUrl) {
 }
 
 export async function getData(endpoint, customConfig = {}) {
-  const config = {
-    method: 'GET',
-    ...customConfig,
-  }
+    const config = {
+        method: 'GET',
+        ...customConfig,
 
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("token")
+        }
+    }
   return doFetch(endpoint, config);
+    
 }
 
 export async function postData(endpoint, body, customConfig = {}) {
@@ -20,7 +24,8 @@ export async function postData(endpoint, body, customConfig = {}) {
     method: 'POST',
     body: JSON.stringify(body),
     ...customConfig,
-    headers: {
+      headers: {
+       'Authorization': 'Bearer ' + localStorage.getItem("token"),
       'Content-Type': 'application/json',
       ...customConfig.headers,
     },

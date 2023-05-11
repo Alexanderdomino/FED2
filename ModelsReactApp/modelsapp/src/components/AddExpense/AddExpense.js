@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { postData } from '../../Services/api';
-
+import jwt_decode from 'jwt-decode';
 export function AddExpense() {
     const initialState = {
         ModelId: '',
@@ -24,7 +24,11 @@ export function AddExpense() {
 
     async function sendData() {
         try {
-            await postData('Expense', state);
+            const token = localStorage.getItem('token');
+            const decoded = jwt_decode(token);
+            state.ModelId = decoded.ModelId
+            
+            await postData('api/Expense', state);
             setState(initialState);
         }
         catch (error) {
@@ -45,8 +49,16 @@ export function AddExpense() {
 
     return (
         <>
-            <h2>Add grades</h2>
+            <h2>Add Expense</h2>
             <form onSubmit={handleSubmit}>
+                <label>
+                    Job-id:
+                    <input
+                        name="JobId"
+                        type="number"
+                        value={state.JobId}
+                        onChange={handleInputChange} />
+                </label>
                 <label>
                     Date:
                     <input
