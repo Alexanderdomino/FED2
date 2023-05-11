@@ -25,8 +25,13 @@ export async function postData(endpoint, body, customConfig = {}) {
     body: JSON.stringify(body),
     ...customConfig,
       headers: {
+<<<<<<< HEAD
        'Authorization': 'Bearer ' + localStorage.getItem("token"),
       'Content-Type': 'application/json',
+=======
+     'Authorization': 'Bearer ' + localStorage.getItem("token"),
+     'Content-Type': 'application/json',
+>>>>>>> 5c52560fdf69422ef88f65496958929161f5791d
       ...customConfig.headers,
     },
   }

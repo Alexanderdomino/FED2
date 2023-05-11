@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { postData } from '../../Services/api';
 
+
 export function CreateManager() {
     const initialState = {
         FirstName: '',
@@ -47,6 +48,7 @@ export function CreateManager() {
 
     return (
         <>
+            <h2>Create Manager</h2>
             <button onClick={toggleContentVisibility}>
                 {isContentVisible ? "Hide" : "Add Manager"}
             </button>
@@ -94,8 +96,10 @@ export function CreateManager() {
                             />
                         </label>
                         <br />
-                        <input type="reset" value="Cancel" onClick={handleReset} />{" "}
-                        <input type="submit" value="Submit" />
+                        <div style={{ textAlign: 'center' }}>
+                            <input type="reset" value="Cancel" onClick={handleReset} />{" "}
+                            <input type="submit" value="Submit" />
+                        </div>
                     </form>
                 </>
             )}
