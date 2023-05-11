@@ -3,9 +3,11 @@ import { postData } from '../Services/api';
 
 export function AddJobs() {
     const initialState = {
-        studentNo: '',
-        name: '',
-        grade: ''
+        startDate: '',
+        days: '',
+        customer: '',
+        locations: '',
+        comments: ''
     };
     const [state, setState] = useState(initialState);
 
@@ -22,7 +24,7 @@ export function AddJobs() {
 
     async function sendData() {
         try {
-            await postData('students', state);
+            await postData('Job', state);
             setState(initialState);
         }
         catch (error) {
@@ -43,34 +45,51 @@ export function AddJobs() {
 
     return (
         <>
-            <h2>Add grades</h2>
+            <h2>Add customers</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Student no.:
+                    customer:
                     <input
-                        name="studentNo"
+                        name="customer"
                         type="text"
-                        value={state.studentNo}
+                        value={state.customer}
+                        onChange={handleInputChange} />
+                </label>
+                <label>
+                    Start date:
+                    <input
+                        name="startDate"
+                        type="text"
+                        value={state.startDate}
                         onChange={handleInputChange} />
                 </label>
                 <br />
                 <label>
-                    Name:
+                    Number of days:
                     <input
-                        name="name"
+                        name="days"
                         type="text"
-                        value={state.name}
+                        value={state.days}
+                        onChange={handleInputChange} />
+                </label>
+                <label>
+                    Location:
+                    <input
+                        name="location"
+                        type="text"
+                        value={state.locations}
+                        onChange={handleInputChange} />
+                </label>
+                <label>
+                    Comments:
+                    <input
+                        name="comments"
+                        type="text"
+                        value={state.comments}
                         onChange={handleInputChange} />
                 </label>
                 <br />
-                <label>
-                    Grade:
-                    <input
-                        name="grade"
-                        type="text"
-                        value={state.grade}
-                        onChange={handleInputChange} />
-                </label>
+               
                 <br />
                 <input type="reset" value="Cancel" onClick={handleReset} /> <input type="submit" value="Submit" />
             </form>

@@ -8,13 +8,14 @@ export function ShowJobs() {
     const initialState = [];
     const [state, setState] = useState(initialState);
     const [error, setError] = useState(null);
-    const [pageNo, setPage] = useState(1);
+   
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await getData(`Jobs`);
-                setState(data);
+                console.log(data); 
+                setState(data.json());
             }
             catch (error) {
                 setError(error);
@@ -22,13 +23,13 @@ export function ShowJobs() {
         };
 
         fetchData();
-    }, [pageNo]);
+    }, );
 
     if (error !== null)
         return (
             <>
-                <h2>List grades</h2>
-                <p>{error}</p>
+                <h2>List jobs</h2>
+                <p>{error.toString()}</p>
             </>
         )
     else
