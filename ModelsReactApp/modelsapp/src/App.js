@@ -7,6 +7,7 @@ import {
 import { MainPage } from './components/MainPage/MainPage';
 import Login from './components/Login/Login';
 import ManagerPage from './components/Manager/ManagerPage';
+import ModelPage from "./components/Model/ModelPage";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/" element={<MainPage />} />
                     <Route path="/manager" element={<ManagerPage />} />
+                    <Route path="/model" element={<ModelPage />} />
                 </Routes>
             </div>
         </Router>
