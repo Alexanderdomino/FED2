@@ -1,5 +1,4 @@
 import { useState } from "react";
-import '../Manager/Manager.css'
 import { postData } from '../../Services/api';
 
 export function AddJob() {

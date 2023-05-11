@@ -1,6 +1,4 @@
 import React from 'react';
-import {AssignModelToJob} from '../AssignModelToJob/AssignModelToJob';
-import {DeleteModelFromJob} from "../DeleteModelFromJob/DeleteModelFromJob";
 import {Navbar} from "../Navbar/Navbar";
 import {Outlet} from "react-router-dom";
 
@@ -12,8 +10,6 @@ const ManagerPage = () => {
             <Navbar />
             <Outlet />
             <br/>
-            <AssignModelToJob />
-            <DeleteModelFromJob />
         </div>
     );
 };

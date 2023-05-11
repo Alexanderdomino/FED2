@@ -1,9 +1,11 @@
 import React from 'react';
-import './Manager.css';
+
 import CreateModel from './CreateModel';
 import CreateManager from './CreateManager';
 import AddJob from '../AddJob/AddJob';
 import { Navbar } from '../Navbar/Navbar';
+import {AssignModelToJob} from "../AssignModelToJob/AssignModelToJob";
+import {DeleteModelFromJob} from "../DeleteModelFromJob/DeleteModelFromJob";
 
 
 const ManagerPage = () => {
@@ -14,6 +16,8 @@ const ManagerPage = () => {
             <CreateModel />
             <CreateManager />
             <AddJob />
+            <AssignModelToJob />
+            <DeleteModelFromJob />
         </div>
     );
 };

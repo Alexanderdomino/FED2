@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { postData } from '../../Services/api';
-import './Manager.css';
 
 
 export function CreateManager() {

@@ -1,15 +1,16 @@
-import './App.css';
 import {
     BrowserRouter as Router,
     Routes,
-    Route
+    Route,
 } from 'react-router-dom';
 import { MainPage } from './components/MainPage/MainPage';
 import Login from './components/Login/Login';
 import ManagerPage from './components/Manager/ManagerPage';
 import ModelPage from "./components/Model/ModelPage";
+import './App.css';
 
 function App() {
+    
     return (
         <Router>
             <div className="App">
