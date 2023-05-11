@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import './Navbar.css';
 
-export function Navbar() {
+export function Navbar({ isLoggedIn, handleLogout }) {
     return (
         <nav>
             <NavLink to="/" >
@@ -13,9 +13,15 @@ export function Navbar() {
             <NavLink to="/Model" >
                 Model page
             </NavLink>
-            <NavLink to="/Login" >
-                Log out
-            </NavLink>
+            {isLoggedIn ? (
+                <NavLink to="/Login" onClick={handleLogout}>
+                    Log out
+                </NavLink>
+            ) : (
+                <NavLink to="/Login">
+                    Log in
+                </NavLink>
+            )}
         </nav>
     );
 }
