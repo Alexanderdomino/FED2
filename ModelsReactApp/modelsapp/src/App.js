@@ -10,6 +10,7 @@ import ModelPage from "./components/Model/ModelPage";
 import './App.css';
 import {useEffect, useState} from "react";
 import {Navbar} from "./components/Navbar/Navbar";
+import {NoAccess} from "./components/NoAccess/NoAccess";
 
 function App() {
     const [tokenPayload, setTokenPayload] = useState(null);
@@ -52,12 +53,12 @@ function App() {
                     {tokenPayload?.['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'Manager' ? (
                         <Route path="/manager" element={<ManagerPage />} />
                     ) : (
-                        <Route path="/manager" element={<MainPage />} />
+                        <Route path="/manager" element={<NoAccess />} />
                     )}
                     {tokenPayload?.['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'Model' ? (
                         <Route path="/model" element={<ModelPage />} />
                     ) : (
-                        <Route path="/model" element={<MainPage />} />
+                        <Route path="/model" element={<NoAccess />} />
                     )}
                 </Routes>
             </div>
