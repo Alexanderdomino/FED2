@@ -34,7 +34,11 @@ export function AddExpense() {
             setState(initialState);
         }
         catch (error) {
-            alert(error.message);
+            if (error.message.includes(":400")) {
+                alert("Model is not assigned to the job with that job id or expense already exists");
+            } else {
+                alert(`Something bad happened: ${error}`);
+            }
         }
     }
 

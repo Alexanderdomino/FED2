@@ -40,6 +40,7 @@ export function ShowJobs() {
                     <table>
                         <thead>
                             <tr>
+                                <th>jobId</th>
                                 <th>Customer</th>
                                 <th>Start date</th>
                                 <th>Days</th>
@@ -49,6 +50,7 @@ export function ShowJobs() {
                         <tbody>
                             {jobs.map(job => (
                                 <tr key={job.jobId}>
+                                    <td>{job.jobId}</td>
                                     <td>{job.customer}</td>
                                     <td>{job.startDate}</td>
                                     <td>{job.days}</td>
